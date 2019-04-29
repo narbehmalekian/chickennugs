@@ -1,0 +1,73 @@
+body {
+    background-image: url("nugsx8.png");
+    background-color: #cccccc;
+    color: beige;
+    background-attachment: fixed;
+    font-family: 'Tillana', cursive;
+}
+
+table {
+    table-layout: fixed;
+    margin: 10%;
+    text-align: center;
+    align-content: center;
+    background-color: #000000CC;
+    border-radius: 20px;
+    border-collapse: collapse;
+    width: 80%;
+} 
+
+th {
+    text-align: center;
+    align-content: center;
+    background-color: #000000CC;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 24px;
+}
+
+td {
+    width: 33%;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    border-radius: 0px 0px 20px 20px;
+    padding: 20px;
+    font-size: 16px;
+}
+
+h1 {
+    font-family: 'Princess Sofia', cursive;
+    font-size: 60px;
+}
+
+div { 
+    text-align: center; 
+}
+
+button {
+    text-align: center;
+    background-color:#00000000;
+    display: block;
+    border: none;
+    font-size: 16px;
+    font-family: 'Tillana', cursive;
+    color: beige;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 20px;
+    outline-width: 0;
+}
+
+button:hover {
+    background-color:#000000AA;
+}
+
+button:active {
+    background-color:#000000FF;
+}
+
+textarea {
+    width=100%;
+}

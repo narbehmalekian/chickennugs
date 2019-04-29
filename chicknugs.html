@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>🍗 Chicken Nugs!</title>
+        <link rel="stylesheet" href="chicknugs.css">
+        <link href="https://fonts.googleapis.com/css?family=Princess+Sofia|Tillana" rel="stylesheet">
+        <script>
+            var test = {
+                heading:"Happy birthday, my nugget!",
+                text:"I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...",
+                upVotes:0,
+                downVotes:0,
+                date:new Date(),
+                id: 0,
+                upVote: function() {
+                    upVotes += 1;
+                },
+                downVote: function() {
+                    downVotes += 1;
+                }
+            }
+            //var test2 = new Post("second test","does this work too?");
+            let posts = [test]; // get posts
+            
+            class Post {
+                constructor(heading,text){
+                    this.heading = heading;
+                    this.text = text;
+                    this.upVotes = 0;
+                    this.downVotes = 0;
+                    this.date = new Date();
+                    this.id = getNewID();
+                }
+                upVote() {
+                    upVotes+=1;
+                }
+                downVote() {
+                    downVotes+=1;
+                }
+            }
+            
+            function getNewID(){
+                var max = 0;
+                for(var i=0; i<posts.length;i++){
+                    if(posts[i].id>max){
+                        max=posts[i].id+1;
+                    }
+                }
+                return max;
+            }
+            
+            function openEditor(){
+                document.getElementById("new").style.display = "block";
+            }
+            
+            function closeEditor(){
+                document.getElementById("new").style.display = "none";
+            }
+            
+            function daysBetween(a,b){
+                return 20;
+            }
+            
+            function generatePosts(mode){
+                if( mode === 'date' ){
+                    posts.sort(function(a,b){
+                        return daysBetween(a.date, b.date);
+                    })
+                }
+                else if( mode === 'rank' ){
+                    posts.sort(function(a,b){
+                        return a.upVotes - b.upVotes;
+                    })
+                }
+                for( let i = 0; i<posts.length; i++ ){
+                    var post = posts[i];
+                    if( daysBetween(post.date, new Date()) > 500 ){
+                        delete posts[i];
+                    }
+                    else {
+                        var table = document.createElement('table');
+                        var tr = document.createElement('tr');
+                        var th = document.createElement('th');
+                        th.innerHTML = post.heading + " - " + post.id;
+                        th.setAttribute("colspan",2);
+                        tr.appendChild(th);
+                        table.appendChild(tr);
+                        
+                        tr = document.createElement('tr');
+                        var td = document.createElement('td');
+                        td.innerHTML = post.text;
+                        td.setAttribute("colspan",2);
+                        tr.appendChild(td);
+                        table.appendChild(tr);
+                        
+                        var date = post.date;
+                        tr = document.createElement('tr');
+                        td = document.createElement('td');
+                        var button = document.createElement('button');
+                        button.innerHTML = 'Up Vote: ' + post.upVotes;
+                        button.setAttribute("onclick","");
+                        td.appendChild(button);
+                        
+                        button = document.createElement('button');
+                        button.innerHTML = 'Down Vote: ' + post.downVotes;
+                        button.setAttribute("onclick","");
+                        td.appendChild(button);
+                        
+                        tr.appendChild(td);
+                        td = document.createElement('td');
+                        td.innerHTML = date.toDateString();
+                        tr.appendChild(td);
+                        table.appendChild(tr);
+                        document.body.appendChild(table);
+                    }
+                }
+                
+
+            }
+            
+            function createPost(){
+                closeEditor();
+                var head = document.getElementById("heading").value;
+                var text = document.getElementById("post").value;
+                var post = new Post( head, post );
+                posts.push(post);
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr><th colspan="3"><h1>Chicken Nuggets!</h1></th></tr>
+            <tr>
+                <td style=padding:0px><button onclick="generatePosts('rank')"><h3>Top Posts</h3></button></td>
+                <td style=padding:0px><button onclick="generatePosts('date')"><h3>Newest Posts</h3></button></td>
+                <td style=padding:0px><button onclick="openEditor()"><h3>+</h3></button></td>
+            </tr>
+        </table>
+        
+        <table id="new" style="display: none">
+            <tr><td><form method="post">
+                <input type="text" name="heading" id="heading">
+                <br>
+                <textarea name="post" rows=5 id="post"></textarea>
+                <br>
+                <button onclick="createPost()">Post!</button>
+                <button onclick="closeEditor()">Cancel</button>
+            </form></td></tr>
+        </table>
+        
+    </body>
+</html>
