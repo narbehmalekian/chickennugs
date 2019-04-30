@@ -34,16 +34,16 @@
             var test  = new Post("Happy birthday, my nugget!","I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...");
             test.upVote();
             test.upVote();
-            posts.push(test);
+            //posts.push(test);
             var test2 = new Post("second post","I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...");
             test2.upVote();
-            posts.push(test2);
+            //posts.push(test2);
             var test3 = new Post("third test","does this work too?");
-            posts.push(test3);
+            //posts.push(test3);
             var test4 = new Post("4th test","does this work too?");
-            posts.push(test4);
+            //posts.push(test4);
             var test5 = new Post("5th test","kick me");
-            posts.push(test5);
+            //posts.push(test5);
             
             function getNewID(){
                 var max = 0;
@@ -146,7 +146,7 @@
             function createPost(){
                 closeEditor();
                 var head = document.getElementById("heading").value;
-                var text = document.getElementById("post").textContent;
+                var text = document.getElementById("post").text;
                 var post = new Post( head, post );
                 posts.push(post);
                 generatePosts('date');
@@ -167,7 +167,7 @@
             <tr><td><form method="post">
                 <input type="text" name="heading" id="heading">
                 <br>
-                <textarea name="post" rows=5 id="post"></textarea>
+                <textarea name="post" rows=5 id="post" value="ey"></textarea>
                 <br>
                 <button type="button" onclick="createPost()">Post!</button>
                 <button type="button" onclick="closeEditor()">Cancel</button>
