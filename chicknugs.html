@@ -2,11 +2,13 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>🍗 Chicken Nugs!</title>
+        <title>Nugs!</title>
         <link rel="stylesheet" href="chicknugs.css">
         <link href="https://fonts.googleapis.com/css?family=Princess+Sofia|Tillana" rel="stylesheet">
+        <link rel="icon" href="icon.png">
         <script>
             let posts = [];
+            
             class Post {
                 constructor(heading,text){
                     this.heading = heading;
@@ -14,7 +16,7 @@
                     this.upVotes = 0;
                     this.downVotes = 0;
                     this.date = new Date();
-                    var max = 0;
+                    let max = 0;
                     for(var i=0; i<posts.length;i++){
                         if(posts[i].id>max){
                             max=posts[i].id+1;
@@ -23,45 +25,25 @@
                     this.id = max;
                 }
                 upVote() {
-                    upVotes+=1;
+                    this.upVotes+=1;
                 }
                 downVote() {
-                    downVotes+=1;
+                    this.downVotes+=1;
                 }
             }
-            
-            var test = {
-                heading:"Happy birthday, my nugget!",
-                text:"I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...",
-                upVotes:0,
-                downVotes:0,
-                date:new Date(),
-                id: 0,
-                upVote: function() {
-                    upVotes += 1;
-                },
-                downVote: function() {
-                    downVotes += 1;
-                }
-            }
-            var test2 = {
-                heading:"second post",
-                text:"I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...",
-                upVotes:5,
-                downVotes:0,
-                date:new Date(),
-                id: 1,
-                upVote: function() {
-                    upVotes += 1;
-                },
-                downVote: function() {
-                    downVotes += 1;
-                }
-            }
+            var test  = new Post("Happy birthday, my nugget!","I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...");
+            test.upVote();
+            test.upVote();
+            posts.push(test);
+            var test2 = new Post("second post","I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...");
+            test2.upVote();
+            posts.push(test2);
             var test3 = new Post("third test","does this work too?");
+            posts.push(test3);
             var test4 = new Post("4th test","does this work too?");
+            posts.push(test4);
             var test5 = new Post("5th test","kick me");
-            posts = [test,test2,test3,test4,test5]; // get posts
+            posts.push(test5);
             
             function getNewID(){
                 var max = 0;
@@ -90,9 +72,22 @@
                 }
             }
             
+            function vote(id,vote){
+                for(var i=0;i<posts.length;i++){
+                    if(posts[i].id==id){
+                        if(vote>0){
+                            posts[i].upVote();
+                        }
+                        else if(vote<0){
+                            posts[i].downVote();
+                        }
+                    }
+                }
+                generatePosts('date');
+            }
+            
             function generatePosts(mode){
                 clearPosts();
-                clearPosts();//IDK why this needs to be twice... fix
                 if( mode === 'date' ){
                     posts.sort(function(a,b){
                         return daysBetween(a.date, b.date);
@@ -129,12 +124,12 @@
                         td = document.createElement('td');
                         var button = document.createElement('button');
                         button.innerHTML = 'Up Vote: ' + post.upVotes;
-                        button.setAttribute("onclick","");
+                        button.setAttribute("onclick","vote(" + post.id + ", 1)");
                         td.appendChild(button);
                         
                         button = document.createElement('button');
                         button.innerHTML = 'Down Vote: ' + post.downVotes;
-                        button.setAttribute("onclick","");
+                        button.setAttribute("onclick","vote(" + post.id + ", -1)");
                         td.appendChild(button);
                         
                         tr.appendChild(td);
@@ -160,7 +155,7 @@
     </head>
     <body>
         <table>
-            <tr><th colspan="3"><h1>Chicken Nuggets!</h1><button onclick="clearPosts()">clear</button></th></tr>
+            <tr><th colspan="3"><h1>Chicken Nuggets!</h1><button onclick="clearPosts()">clear (REMOVE THIS)</button></th></tr>
             <tr>
                 <td style=padding:0px><button onclick="generatePosts('rank')"><h3>Top Posts</h3></button></td>
                 <td style=padding:0px><button onclick="generatePosts('date')"><h3>Newest Posts</h3></button></td>
@@ -178,6 +173,5 @@
                 <button type="button" onclick="closeEditor()">Cancel</button>
             </form></td></tr>
         </table>
-        
     </body>
 </html>
