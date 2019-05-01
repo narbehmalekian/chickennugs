@@ -22,18 +22,18 @@ th {
     text-align: center;
     align-content: center;
     background-color: #000000CC;
-    padding: 10px;
+    padding: 5px;
     border-radius: 20px;
     font-size: 24px;
 }
 
 td {
-    width: 33%;
+    width: 50%;
     text-align: center;
     align-content: center;
     align-items: center;
     border-radius: 0px 0px 20px 20px;
-    padding: 20px;
+    padding: 5px;
     font-size: 16px;
 }
 
@@ -59,6 +59,7 @@ button {
     cursor: pointer;
     border-radius: 20px;
     outline-width: 0;
+    height: 40px;
 }
 
 button:hover {
@@ -69,6 +70,18 @@ button:active {
     background-color:#000000FF;
 }
 
+input {
+    width:80%;
+}
+
 textarea {
-    width=100%;
+    width: 80%;
+    height: 100px;
+    resize: none;
+    overflow-y: scroll;
+}
+
+span {
+    display: block;
+    padding-right:10px;
 }
