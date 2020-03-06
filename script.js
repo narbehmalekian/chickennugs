@@ -19,16 +19,16 @@
             var test  = new Post("Happy birthday, my nugget!","I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...");
             test.upVote();
             test.upVote();
-            //posts.push(test);
+            posts.push(test);
             var test2 = new Post("second post","I made this website for you so you OR ANYBODY can post whatever to this nugget page! No pictures for now, but they're coming...");
             test2.upVote();
-            //posts.push(test2);
+            posts.push(test2);
             var test3 = new Post("third test","does this work too?");
-            //posts.push(test3);
+            posts.push(test3);
             var test4 = new Post("4th test","does this work too?");
-            //posts.push(test4);
+            posts.push(test4);
             var test5 = new Post("5th test","kick me");
-            //posts.push(test5);
+            posts.push(test5);
 
             function getNewID(){
                 var max = 0;
