@@ -12,7 +12,7 @@ table {
     margin-left: 10%;
     text-align: center;
     align-content: center;
-    background-color: #000000CC;
+    background-color: #111111CC;
     border-radius: 20px;
     border-collapse: collapse;
     width: 80%;
@@ -21,7 +21,7 @@ table {
 th {
     text-align: center;
     align-content: center;
-    background-color: #000000CC;
+    background-color: #111111CC;
     padding: 5px;
     border-radius: 20px;
     font-size: 24px;
@@ -48,7 +48,7 @@ div {
 
 button {
     text-align: center;
-    background-color:#00000000;
+    background-color:#11111100;
     display: block;
     border: none;
     font-size: 16px;
@@ -63,11 +63,11 @@ button {
 }
 
 button:hover {
-    background-color:#000000AA;
+    background-color:#111111AA;
 }
 
 button:active {
-    background-color:#000000FF;
+    background-color:#111111FF;
 }
 
 input {
